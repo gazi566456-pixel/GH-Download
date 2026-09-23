@@ -1,0 +1,11 @@
+هذه النسخة أعيد بناؤها من ملفات المشروع والكود المتاح في المحادثة.
+
+1) افتح المجلد video_downloader_new في VS Code.
+2) تأكد أن Flutter موجود في PATH.
+3) شغّل:
+   flutter pub get
+   flutter run
+
+إذا لم يكن Android wrapper موجودًا في بيئة Flutter المحلية، سيحاول android/gradlew.bat تنزيل Gradle 8.11.1 تلقائيًا.
+
+ملاحظة: ملفات Flutter SDK وGradle cache وملفات البناء المحلية غير مضمنة داخل ZIP.

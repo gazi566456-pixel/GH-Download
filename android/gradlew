@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+GRADLE_VERSION=8.11.1
+GRADLE_HOME="$HOME/.gradle/flutter-wrapper/gradle-$GRADLE_VERSION"
+if [ -x "$GRADLE_HOME/bin/gradle" ]; then
+  exec "$GRADLE_HOME/bin/gradle" "$@"
+fi
+if command -v gradle >/dev/null 2>&1; then
+  exec gradle "$@"
+fi
+ZIP="/tmp/gradle-$GRADLE_VERSION-bin.zip"
+URL="https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip"
+mkdir -p "$HOME/.gradle/flutter-wrapper"
+printf '%s\n' "Downloading Gradle $GRADLE_VERSION for this project..."
+curl -L --fail "$URL" -o "$ZIP"
+unzip -q -o "$ZIP" -d "$HOME/.gradle/flutter-wrapper"
+exec "$GRADLE_HOME/bin/gradle" "$@"
